@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Muhammad Kholid Saifulloh - Software Engineer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0e65e6;
+            --primary-dark: #0b5ed7;
+            --bg: #f8fafc;
+            --card-bg: #ffffff;
+            --text: #1f2937;
+            --subtext: #6b7280;
+            --border: #e5e7eb;
+            --radius: 16px;
+            --radius-sm: 8px;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            --shadow-hover: 0 10px 30px rgba(0, 0, 0, 0.1);
+            --accent: #06b6d4;
+            --accent-light: #e0f7fa;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        nav {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 12px 0;
+        }
+
+        .navbar {
+            max-width: 1100px;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 24px;
+        }
+
+        .navbar h2 {
+            margin: 0;
+            color: var(--primary);
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.2s ease;
+            padding: 5px 10px;
+            border-radius: 6px;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+            background-color: rgba(14, 101, 230, 0.05);
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 40px 24px;
+        }
+
+        header {
+            text-align: center;
+            padding-bottom: 40px;
+            max-width: 800px;
+            margin: 0 auto 60px;
+            position: relative;
+        }
+
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+
+        header h1 {
+            font-size: 2.8rem;
+            background: linear-gradient(135deg, var(--primary) 0%, #4f46e5 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 16px;
+            line-height: 1.2;
+        }
+
+        header p {
+            color: var(--subtext);
+            font-size: 1rem;
+        }
+
+        header p a {
+            color: var(--primary);
+            text-decoration: none;
+            position: relative;
+            padding: 0 2px;
+        }
+
+        header p a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        header p a:hover::after {
+            width: 100%;
+        }
+
+        .profile-photo {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 4px solid white;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            margin-bottom: 25px;
+            transition: transform 0.3s ease;
+        }
+
+        .profile-photo:hover {
+            transform: scale(1.05);
+        }
+
+        .svg-illustration {
+            max-width: 100%;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .svg-illustration svg {
+            max-width: 100%;
+            height: auto;
+            filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.05));
+        }
+
+        section {
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            position: relative;
+            margin-bottom: 30px;
+            display: inline-block;
+            font-weight: 600;
+            color: var(--text);
+            padding-left: 15px;
+        }
+
+        .section-title::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 5px;
+            height: 70%;
+            background: var(--primary);
+            border-radius: 3px;
+        }
+
+        .profile-content {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            line-height: 1.8;
+        }
+
+        .profile-content p {
+            color: var(--text);
+            font-size: 1.05rem;
+        }
+
+        .card {
+            background: var(--card-bg);
+            padding: 30px;
+            margin-bottom: 25px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid var(--border);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 6px;
+            height: 100%;
+            background: var(--primary);
+            border-radius: 3px 0 0 3px;
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .company-logo {
+            width: 70px;
+            height: 70px;
+            object-fit: contain;
+            margin-right: 20px;
+            border-radius: var(--radius-sm);
+            background-color: white;
+            padding: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--border);
+        }
+
+        .card-title {
+            flex: 1;
+        }
+
+        .card h3 {
+            margin: 0;
+            font-size: 1.4rem;
+            color: var(--text);
+            margin-bottom: 5px;
+        }
+
+        .card small {
+            color: var(--subtext);
+            display: block;
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+        }
+
+        .card ul {
+            padding-left: 20px;
+            margin-top: 20px;
+        }
+
+        .card ul li {
+            margin-bottom: 12px;
+            position: relative;
+        }
+
+        .card ul li::before {
+            content: '•';
+            color: var(--primary);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .skills span {
+            display: inline-block;
+            background: rgba(14, 101, 230, 0.08);
+            color: var(--primary);
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(14, 101, 230, 0.15);
+        }
+
+        .skills span:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Project cards styles */
+        .project-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid var(--border);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .project-image {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .project-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(0deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0) 50%);
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .project-card:hover .project-image img {
+            transform: scale(1.08);
+        }
+
+        .project-content {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-title {
+            margin: 0 0 12px 0;
+            font-size: 1.3rem;
+            color: var(--text);
+            font-weight: 600;
+        }
+
+        .project-description {
+            color: var(--subtext);
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            flex-grow: 1;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 20px;
+        }
+
+        .project-tech span {
+            background: var(--accent-light);
+            color: var(--accent);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .project-links {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
+        }
+
+        .project-links a {
+            text-decoration: none;
+            color: var(--primary);
+            font-size: 0.95rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.2s ease;
+            padding: 8px 15px;
+            border-radius: 8px;
+        }
+
+        .project-links a:hover {
+            background: rgba(14, 101, 230, 0.08);
+        }
+
+        .project-links a i {
+            font-size: 0.9rem;
+        }
+
+        /* Education section */
+        .education-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+            gap: 25px;
+        }
+
+        .education-card {
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+        }
+
+        .education-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .education-logo {
+            width: 80px;
+            height: 80px;
+            padding: 15px;
+            background: #f9fafb;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+        }
+
+        .education-logo img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        .education-content h3 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+            color: var(--text);
+        }
+
+        .education-content p {
+            color: var(--subtext);
+            font-size: 0.9rem;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            color: var(--subtext);
+            font-size: 0.9rem;
+            border-top: 1px solid var(--border);
+            margin-top: 80px;
+        }
+
+        footer a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        /* Social icons */
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            border: 1px solid var(--border);
+        }
+
+        .social-links a:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .card {
+                padding: 20px;
+            }
+
+            .card h3 {
+                font-size: 1.2rem;
+            }
+
+            .nav-links {
+                gap: 5px;
+            }
+
+            .nav-links a {
+                font-size: 0.85rem;
+                padding: 5px 8px;
+            }
+
+            .company-logo {
+                width: 55px;
+                height: 55px;
+            }
+
+            .project-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .education-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animated {
+            animation: fadeInUp 0.6s ease-out;
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="navbar">
+        <h2>Muhammad Kholid</h2>
+        <div class="nav-links">
+            <a href="#about"><i class="fas fa-user-circle fa-sm"></i> About</a>
+            <a href="#experience"><i class="fas fa-briefcase fa-sm"></i> Experience</a>
+            <a href="#projects"><i class="fas fa-code-branch fa-sm"></i> Projects</a>
+            <a href="#education"><i class="fas fa-graduation-cap fa-sm"></i> Education</a>
+            <a href="#skills"><i class="fas fa-tools fa-sm"></i> Skills</a>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <header id="about" class="animated">
+        <div class="svg-illustration">
+            <svg width="100%" height="180" viewBox="0 0 800 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="50" y="30" width="700" height="140" rx="20" fill="#e0ecff"/>
+                <rect x="80" y="60" width="100" height="20" rx="6" fill="#007bff"/>
+                <rect x="80" y="100" width="600" height="20" rx="6" fill="#90c2ff"/>
+                <circle cx="710" cy="70" r="10" fill="#007bff"/>
+                <circle cx="740" cy="70" r="10" fill="#007bff"/>
+                <circle cx="770" cy="70" r="10" fill="#007bff"/>
+                <path d="M640 140h90v10h-90z" fill="#007bff"/>
+            </svg>
+        </div>
+        <img src="https://media.licdn.com/dms/image/v2/C4E03AQF2O99Tx7_v1w/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1631671594814?e=1750896000&v=beta&t=6LnDNUYbVLFYvIowOepuTarcFptb9OzsFS7TA38IcAQ" alt="Profile Photo" class="profile-photo">
+        <h1>Muhammad Kholid Saifulloh - Software Engineer</h1>
+        <p>
+            <a href="mailto:kholid.saifulloh@gmail.com"><i class="far fa-envelope"></i> kholid.saifulloh@gmail.com</a> ·
+            <a href="https://linkedin.com/in/muhammad-kholid-772811216" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a> ·
+            <a href="https://github.com/kholidss" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+        </p>
+        <p>Jakarta, Indonesia</p>
+    </header>
+
+    <section class="animated" style="animation-delay: 0.2s;">
+        <h2 class="section-title">Profile</h2>
+        <div class="profile-content">
+            <p>
+                A highly skilled software engineer with over 3 years of experience in designing and implementing robust,
+                scalable systems and APIs. Specializes in leveraging Golang to build efficient microservices and cloud-based solutions,
+                with a deep understanding of backend architecture and design patterns. Proficient in optimizing system performance and
+                ensuring high availability, while continuously improving development workflows in agile environments.
+                Experienced in working with diverse technologies including Kubernetes, Docker, and various cloud platforms (AWS, GCP, etc.).
+                Adept at collaborating with cross-functional teams to deliver high-quality solutions that meet business needs.
+            </p>
+        </div>
+    </section>
+
+    <section id="experience" class="animated" style="animation-delay: 0.3s;">
+        <h2 class="section-title">Work Experience</h2>
+
+        <div class="card">
+            <div class="card-header">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQSlFlOIvjnazSvesp0dUIdp0eME-QvwYYtg&s" alt="Lion Parcel Logo" class="company-logo">
+                <div class="card-title">
+                    <h3>Backend Engineer – PT Lion Express</h3>
+                    <small><i class="fas fa-map-marker-alt"></i> Jakarta, Indonesia | <i class="far fa-calendar-alt"></i> Jan 2025 – Present</small>
+                </div>
+            </div>
+            <ul>
+                <li>Developed and maintained core backend services for Lion Parcel's courier application, ensuring smooth daily operations for logistics and delivery systems.</li>
+                <li>Resolved technical issues and performed root-cause analysis to improve system reliability and minimize downtime.</li>
+                <li>Maintained and refactored legacy codebases, increasing maintainability and aligning with modern development standards.</li>
+                <li>Collaborated with frontend developers and QA teams to deliver new features and improve user experience.</li>
+                <li>Contributed to backend performance optimization, reducing API response times by up to 30%.</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_6YofKF0vP_Db_YIrlTtW2qM63TmSY_6iTQ&s" alt="Privy Logo" class="company-logo">
+                <div class="card-title">
+                    <h3>Senior Backend Engineer – PT Privy Identitas Digital</h3>
+                    <small><i class="fas fa-map-marker-alt"></i> DI Yogyakarta, Indonesia | <i class="far fa-calendar-alt"></i> Sep 2022 – Nov 2024</small>
+                </div>
+            </div>
+            <ul>
+                <li>Join the Privy Core team to manage and optimize the B2B Integration API, ensuring seamless and reliable operations.</li>
+                <li>Design, develop, and maintain robust server-side logic and APIs to support and enhance product functionalities.</li>
+                <li>Architect and maintain database systems, focusing on efficient data storage, retrieval, and maintaining data integrity.</li>
+                <li>Analyze bug reports in collaboration with the QA team to identify root causes and implement timely solutions.</li>
+                <li>Resolve critical production issues through thorough root cause analysis and close collaboration with the DevOps team, minimizing
+                    user impact and ensuring high system availability.</li>
+                <li>Collaborate with cross-functional teams to gather and analyze technical requirements, translating them into efficient and scalable
+                    solutions.</li>
+                <li>Mentor aspiring professionals as part of the "Privy Acceleration" program, fostering growth and technical expertise.</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <img src="https://media.licdn.com/dms/image/v2/C560BAQETo_3n_pLvHw/company-logo_200_200/company-logo_200_200/0/1630661375831/refactory_id_logo?e=2147483647&v=beta&t=F3lRHAcJnDQy1cCiPLRy-dx4SNzuR0XEHPRk16E1l6Q" alt="Refactory Logo" class="company-logo">
+                <div class="card-title">
+                    <h3>Fullstack Engineer – Refactory</h3>
+                    <small><i class="fas fa-map-marker-alt"></i> DI Yogyakarta, Indonesia | <i class="far fa-calendar-alt"></i> Jul 2021 – Aug 2022</small>
+                </div>
+            </div>
+            <ul>
+                <li>Collaborated with UI/UX designers to implement visually appealing, user-friendly, and intuitive interfaces, enhancing overall user
+                    experiences.</li>
+                <li>Developed server-side logic, databases, APIs, and integrations to ensure robust backend functionality.</li>
+                <li>Designed and maintained databases, optimizing for efficient data storage, retrieval, and scalability.</li>
+                <li>Enhanced server performance and scalability to support growing user loads, ensuring seamless application operation.</li>
+                <li>Integrated third-party APIs for payment processing in the Jaklingko Project, delivering a secure and seamless payment experience for
+                    users.</li>
+                <li>Contributed to diverse projects, participating in both domestic and international initiatives.</li>
+                <li>Troubleshot and resolved technical issues, collaborating with clients and users to deliver timely solutions while maintaining clear and
+                    effective communication throughout the process.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="projects" class="animated" style="animation-delay: 0.4s;">
+        <h2 class="section-title">Projects</h2>
+
+        <div class="project-cards">
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="https://res.cloudinary.com/daljp7fhq/image/upload/v1745510827/image-hosting/apncpml1cyjjkcvoivzz.png" alt="JakLingko Transportation Platform">
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">JakLingko Transportation Platform (Fullstack Engineer</h3>
+                    <p class="project-description">
+                        Developed a comprehensive integrated transportation system for Jakarta’s public transport network. Responsible for developing core features including user account management, transaction processing, notification services, and secure payment integration. The platform enables users to plan trips, pay fares seamlessly, and monitor transport activity in real time.
+                    </p>
+                    <div class="project-links">
+                        <a href="https://www.jaklingkoindonesia.co.id/en" target="_blank"><i class="fas fa-external-link-alt"></i> View Details</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="https://privy.id/static/img/personal/company/about-us/hero-banner/image.webp" alt="E-Signature Integration System">
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">E-Signature Integration System (Senior Backend Engineer)</h3>
+                    <p class="project-description">
+                        Designed and developed a secure electronic signature platform compliant with Indonesian digital signature regulations. The system supports end-to-end document verification, digital signing workflows, and maintains a tamper-proof audit trail for every user action. Integrated authentication, role-based access control, and encryption to ensure legal validity, data integrity, and user accountability across all transactions.
+                    </p>
+                    <div class="project-links">
+                        <a href="https://privy.id/" target="_blank"><i class="fas fa-external-link-alt"></i> View Details</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="https://logisticsbid.com/wp-content/uploads/2023/05/apa-itu-layanan-interpack-lion-parcel-og.jpg" alt="Logistics System">
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">Logistics System (Backend Engineer)</h3>
+                    <p class="project-description">
+                        Designed and implemented an end-to-end logistics tracking system to streamline delivery operations. The platform intelligently optimizes delivery routes using geospatial data, enables real-time tracking of packages for both users and couriers, and delivers actionable insights through detailed analytics dashboards. Improved operational efficiency, reduced delivery times, and enhanced customer transparency and satisfaction across the logistics pipeline.
+                    </p>
+                    <div class="project-links">
+                        <a href="https://lionparcel.com/" target="_blank"><i class="fas fa-external-link-alt"></i> View Details</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/94/07/70/94077028-d159-a017-ebf8-3d17b6d7119d/AppIcon-1x_U007emarketing-0-5-0-85-220-0.png/1200x600wa.png" alt="Singapore Government Education">
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">Singapore Government Education Program (Fullstack Engineer)</h3>
+                    <p class="project-description">
+                        Developed a dynamic online learning platform tailored to support the continuous professional development of public officers in Singapore. The system features personalized learning paths based on individual roles and goals, interactive and modular courses, and gamification elements to boost engagement. Built-in collaboration tools, such as discussion forums and peer feedback, encourage knowledge sharing and cross-agency learning. The platform plays a key role in fostering a culture of lifelong learning and upskilling within the public sector.
+                    </p>
+                    <div class="project-links">
+                        <a href="https://idm.learn.gov.sg/" target="_blank"><i class="fas fa-external-link-alt"></i> View Details</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/1/1a/Logo_IDN_Media.png" alt="IDN Media">
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">IDN Media (Fullstack Engineer)</h3>
+                    <p class="project-description">
+                        Contributed to the development of IDN Media, Indonesia's leading consumer tech platform for Millennials and Gen Z. The platform offers a diverse ecosystem including digital media, live streaming, creator economy services, and entertainment. With over 70 million monthly active users, IDN Media aims to empower youth and foster positive societal change.
+                    </p>
+                    <div class="project-links">
+                        <a href="https://www.idn.media/" target="_blank"><i class="fas fa-external-link-alt"></i> View Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="education" class="animated" style="animation-delay: 0.5s;">
+        <h2 class="section-title">Education</h2>
+
+        <div class="education-cards">
+            <div class="education-card">
+                <div class="education-content">
+                    <h3>Electronics State Polytechnic of Surabaya</h3>
+                    <p>Surabaya, Indonesia – Applied Bachelor's in Telecommunication Engineering</p>
+                </div>
+            </div>
+        </div>
+
+
+        <section id="skills" class="animated" style="animation-delay: 0.6s;">
+            <h2 class="section-title">Skills & Tools</h2>
+            <div class="skills">
+                <span>Golang</span>
+                <span>Node.js</span>
+                <span>NestJS</span>
+                <span>Ruby on Rails</span>
+                <span>PHP</span>
+                <span>REST API</span>
+                <span>gRPC</span>
+                <span>GraphQL</span>
+                <span>RabbitMQ</span>
+                <span>Kafka</span>
+                <span>Google Pub/Sub</span>
+                <span>MySQL</span>
+                <span>PostgreSQL</span>
+                <span>BigQuery</span>
+                <span>MongoDB</span>
+                <span>Redis</span>
+                <span>MinIO</span>
+                <span>AWS S3</span>
+                <span>GCS</span>
+                <span>GCP</span>
+                <span>CI/CD</span>
+                <span>Kong</span>
+                <span>Docker</span>
+                <span>Git</span>
+                <span>HTML</span>
+                <span>CSS</span>
+                <span>Etc</span>
+            </div>
+        </section>
+</div>
+
+<footer>
+    <p>© 2025 Muhammad Kholid Saifulloh. All rights reserved.</p>
+    <div class="social-links">
+        <a href="mailto:kholid.saifulloh@gmail.com"><i class="far fa-envelope"></i></a>
+        <a href="https://linkedin.com/in/muhammad-kholid-772811216" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://github.com/kholidss" target="_blank"><i class="fab fa-github"></i></a>
+    </div>
+</footer>
+
+<script>
+    // Add smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
+
+    // Animation on scroll
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = 1;
+                entry.target.style.transform = 'translateY(0)';
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll('section:not(.animated)').forEach(section => {
+        section.style.opacity = 0;
+        section.style.transform = 'translateY(20px)';
+        section.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+        observer.observe(section);
+    });
+</script>
+
+</body>
+</html>
